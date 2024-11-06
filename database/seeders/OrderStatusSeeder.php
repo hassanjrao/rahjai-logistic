@@ -14,6 +14,9 @@ class OrderStatusSeeder extends Seeder
      */
     public function run()
     {
+        // disable foreign key check for this connection before running seeders
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         DB::table('order_statuses')->truncate();
 
         $statuses=[
@@ -47,6 +50,11 @@ class OrderStatusSeeder extends Seeder
             ]
         ];
 
+
+
         DB::table('order_statuses')->insert($statuses);
+
+        // enable foreign key check for this connection after running seeders
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;'); 
     }
 }
