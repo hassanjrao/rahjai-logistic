@@ -72,7 +72,7 @@ class HomeController extends Controller
 
                 $orderLogs = CustomActivity::where('subject_type', Order::class)->where('subject_id', $order->id)
                     ->with(['orderStatus'])
-                    // ->latest()
+                    ->latest()
                     ->get();
             }
             else{
