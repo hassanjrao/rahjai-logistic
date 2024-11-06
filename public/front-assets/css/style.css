@@ -6992,6 +6992,17 @@ Address Area Style
     margin-bottom: 30px;
   }
 
+  .trackingSec {
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+  }
+
 .single-address::before {
   content: "";
   position: absolute;

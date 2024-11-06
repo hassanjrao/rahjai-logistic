@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactSubmission;
+use App\Models\CustomActivity;
+use App\Models\Order;
+use App\Models\OrderStatus;
+use Database\Seeders\OrderSeeder;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,9 +16,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Show the application dashboard.
@@ -47,9 +49,38 @@ class HomeController extends Controller
         return view('front.service-details');
     }
 
-    public function track()
+    public function track(Request $request)
     {
-        return view('front.track');
+        $trackingNumber = $request->tid;
+
+        $orderStatuses = [];
+        $orderLogs = [];
+
+        $order=null;
+
+        $message=null;
+
+        if ($trackingNumber) {
+
+            $order = Order::where('tracking_number', $trackingNumber)->first();
+
+
+            if ($order) {
+
+                $orderStatuses = OrderStatus::all();
+
+
+                $orderLogs = CustomActivity::where('subject_type', Order::class)->where('subject_id', $order->id)
+                    ->with(['orderStatus'])
+                    // ->latest()
+                    ->get();
+            }
+            else{
+                $message='No Package found with this tracking number.';
+            }
+        }
+
+        return view('front.track', compact('order', 'orderStatuses', 'orderLogs', 'message'));
     }
 
     public function contactSubmit(Request $request)

@@ -38,6 +38,8 @@
 
     <!-- TITLE -->
     <title>@yield('page-title') - {{ config('app.name') }} </title>
+
+    @yield('css')
 </head>
 
 @php
