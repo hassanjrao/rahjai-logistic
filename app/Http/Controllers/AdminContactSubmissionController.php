@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setting;
+use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
 
-class AdminSettingController extends Controller
+class AdminContactSubmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $settings=Setting::first();
-
-        return view('admin.settings.index',compact('settings'));
+    public function index(){
+        $contactSubmissions=ContactSubmission::latest()->get();
+        return view('admin.contact-submission.index',compact('contactSubmissions'));
     }
 
     /**
@@ -37,8 +35,7 @@ class AdminSettingController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        //
     }
 
     /**
@@ -72,38 +69,7 @@ class AdminSettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'facebook'=>'nullable',
-            'twitter'=>'nullable',
-            'instagram'=>'nullable',
-            'youtube'=>'nullable',
-            'linkedin'=>'nullable',
-            'address'=>'nullable',
-            'phone'=>'nullable',
-            'email'=>'nullable',
-            'timing'=>'nullable',
-        ]);
-
-
-        $setting=Setting::findorfail($id);
-
-        $setting->update([
-            'facebook'=>$request->facebook,
-            'twitter'=>$request->twitter,
-            'instagram'=>$request->instagram,
-            'youtube'=>$request->youtube,
-            'linkedin'=>$request->linkedin,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'email'=>$request->email,
-            'timing'=>$request->timing,
-        ]);
-
-
-
-        return redirect()->route('admin.settings.index')->withToastSuccess('Updated successfully');
-
-
+        //
     }
 
     /**
@@ -114,6 +80,7 @@ class AdminSettingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ContactSubmission::find($id)->delete();
+        return back()->with('success','Deleted Successfully');
     }
 }

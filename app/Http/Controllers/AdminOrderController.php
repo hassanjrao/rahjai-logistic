@@ -169,6 +169,8 @@ class AdminOrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Order::findOrFail($id)->delete();
+
+        return redirect()->route('admin.orders.index')->withToastSuccess('Deleted successfully');
     }
 }

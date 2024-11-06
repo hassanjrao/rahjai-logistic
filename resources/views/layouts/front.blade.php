@@ -40,6 +40,10 @@
     <title>@yield('page-title') - {{ config('app.name') }} </title>
 </head>
 
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
+
 <body>
     <!-- Start Preloader Area -->
     <div class="preloader">
@@ -67,30 +71,19 @@
                         <div class="header-right-content">
                             <ul>
                                 <li>
-                                    <a href="tel:+966 819 0XXXXX">
+                                    <a href="tel:{{ $setting->phone }}">
                                         <i class='bx bxs-phone-call'></i>
                                         <span>Contact support</span>
 
-                                        +966 819 0XXXXX
+                                        {{ $setting->phone }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailto:support@rahjiexpress.com">
+                                    <a href="mailto:{{ $setting->email }}">
                                         <i class='bx bx-envelope'></i>
                                         <span>Contact support</span>
-                                        support@rahjiexpress.com </a>
+                                        {{ $setting->email }} </a>
                                 </li>
-                                {{-- <li class="pl-0">
-                                    <ul class="flag-wrap">
-                                        <li class="flag-item-top">
-                                            <a href="#" class="flag-bar">
-                                                <img src="{{ asset('front-assets/img/flag/1-united-states.png') }}"
-                                                    alt="Image">
-                                                <span>USA</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -118,31 +111,36 @@
                             <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item">
-                                        <a href="{{ route('home') }}" class="nav-link dropdown-toggle {{ request()->is('/') ? 'active' : '' }}">
+                                        <a href="{{ route('home') }}"
+                                            class="nav-link dropdown-toggle {{ request()->is('/') ? 'active' : '' }}">
                                             Home
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('about') }}" class="nav-link dropdown-toggle {{ request()->is('about') ? 'active' : '' }}">
+                                        <a href="{{ route('about') }}"
+                                            class="nav-link dropdown-toggle {{ request()->is('about') ? 'active' : '' }}">
                                             About Us
                                         </a>
 
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('services') }}" class="nav-link dropdown-toggle {{ request()->is('services') ? 'active' : '' }}">
+                                        <a href="{{ route('services') }}"
+                                            class="nav-link dropdown-toggle {{ request()->is('services') ? 'active' : '' }}">
                                             Our Services
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('track') }}" class="nav-link dropdown-toggle {{ request()->is('track') ? 'active' : '' }}">
+                                        <a href="{{ route('track') }}"
+                                            class="nav-link dropdown-toggle {{ request()->is('track') ? 'active' : '' }}">
                                             Track Parcel
 
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('contact') }}" class="nav-link dropdown-toggle {{ request()->is('contact') ? 'active' : '' }}">
+                                        <a href="{{ route('contact') }}"
+                                            class="nav-link dropdown-toggle {{ request()->is('contact') ? 'active' : '' }}">
 
-                                        Contact Us</a>
+                                            Contact Us</a>
                                     </li>
                                 </ul>
                                 <!-- Start Other Option -->
@@ -199,50 +197,68 @@
                                     <i class="bx bx-location-plus"></i>
                                     Address
 
-                                    <span>Riyadh Saudi Arabia</span>
+                                    <span>
+                                        {{ $setting->address }}
+                                    </span>
                                 </li>
                                 <li>
                                     <i class="bx bx-envelope"></i>
                                     Email
-                                    <span>support@rahjiexpress.com</span>
+                                    <span>
+                                        {{ $setting->email }}
+                                    </span>
                                 </li>
                                 <li>
                                     <i class="bx bxs-phone-call"></i>
                                     Phone
-                                    <span>+966 819 0XXXXX </a></span> </br>
-                                    <span> </a></span> </br>
-                                    <span> </a></span>
+                                    <span><a>{{ $setting->phone }}</a></span> </br>
+                                    <span><a> </a></span> </br>
+                                    <span><a> </a></span>
                                 </li>
                             </ul>
                         </div>
                         <div class="sidebar-modal-widget">
                             <h3 class="title">Connect With Us</h3>
                             <ul class="social-list">
-                                <li>
-                                    <a href="#">
-                                        <i class='bx bxl-twitter'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class='bx bxl-facebook'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class='bx bxl-instagram'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class='bx bxl-linkedin'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class='bx bxl-youtube'></i>
-                                    </a>
-                                </li>
+                                @if ($setting->twitter)
+                                    <li>
+                                        <a href="{{ $setting->twitter }}" target="_blank">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($setting->facebook)
+                                    <li>
+                                        <a href="{{ $setting->facebook }}" target="_blank">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($setting->instagram)
+                                    <li>
+                                        <a href="{{ $setting->instagram }}" target="_blank">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($setting->linkedin)
+                                    <li>
+                                        <a href="{{ $setting->linkedin }}" target="_blank">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($setting->youtube)
+                                    <li>
+                                        <a href="{{ $setting->youtube }}" target="_blank">
+                                            <i class='bx bxl-youtube'></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -260,9 +276,10 @@
                     <div class="single-widget-bottom">
                         <p>Copyright <i class="bx bx-copyright"></i>
                             {{ date('Y') }}
-                             <a href="{{ route('home') }}">
+                            <a href="{{ route('home') }}">
                                 {{ config('app.name') }}
-                            </a></p>
+                            </a>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -273,31 +290,45 @@
                 <div class="col-lg-3">
                     <div class="single-widget-bottom">
                         <ul class="social-link">
-                            <li>
-                                <a href="#">
-                                    <i class='bx bxl-twitter'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class='bx bxl-facebook'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class='bx bxl-instagram'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class='bx bxl-youtube'></i>
-                                </a>
-                            </li>
+                            @if ($setting->twitter)
+                                <li>
+                                    <a href="{{ $setting->twitter }}" target="_blank">
+                                        <i class='bx bxl-twitter'></i>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if ($setting->facebook)
+                                <li>
+                                    <a href="{{ $setting->facebook }}" target="_blank">
+                                        <i class='bx bxl-facebook'></i>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if ($setting->instagram)
+                                <li>
+                                    <a href="{{ $setting->instagram }}" target="_blank">
+                                        <i class='bx bxl-instagram'></i>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if ($setting->linkedin)
+                                <li>
+                                    <a href="{{ $setting->linkedin }}" target="_blank">
+                                        <i class='bx bxl-linkedin'></i>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if ($setting->youtube)
+                                <li>
+                                    <a href="{{ $setting->youtube }}" target="_blank">
+                                        <i class='bx bxl-youtube'></i>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -312,6 +343,8 @@
         <i class='bx bx-chevrons-up bx-fade-up'></i>
     </div>
     <!-- End Go Top Area -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
 
 
     <!-- Jquery Slim JS -->
@@ -346,6 +379,8 @@
     <script src="{{ asset('front-assets/js/map.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('front-assets/js/custom.js') }}"></script>
+
+
 </body>
 
 

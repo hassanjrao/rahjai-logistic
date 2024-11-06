@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +28,7 @@ class HomeController extends Controller
 
     public function contact()
     {
+
         return view('front.contact');
     }
 
@@ -48,5 +50,24 @@ class HomeController extends Controller
     public function track()
     {
         return view('front.track');
+    }
+
+    public function contactSubmit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required',
+        ]);
+
+        ContactSubmission::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back()->withToastSuccess('Your message has been sent successfully, we will get back to you soon.');
     }
 }

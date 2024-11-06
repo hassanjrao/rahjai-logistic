@@ -167,6 +167,23 @@
                                 </div>
 
 
+                                <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                                    <?php
+                                    $value = old('timing', $settings ? $settings->timing : null);
+
+                                    ?>
+                                    <label class="form-label" for="label"> Timing <span
+                                            class="text-danger"></span></label>
+                                    <input type="text" value="{{ $value }}" class="form-control"
+                                        id="timing" name="timing" placeholder="Enter timing">
+                                    @error('timing')
+                                        <span class="text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+
 
 
 

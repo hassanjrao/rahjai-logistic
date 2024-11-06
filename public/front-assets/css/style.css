@@ -7,17 +7,17 @@ template.
 
 This files table contents are outlined below>>>>>
 
-******************************************* 
+*******************************************
 ** - Default Area Style
 ** - Preloader Area Style
 ** - Go Top Area Style
-** - Page navigation Area Style  
+** - Page navigation Area Style
 ** - Video wave Style
 ** - Navbar Area Style
-** - Main Slider Area Style 
-** - Request A Quote Area Style 
-** - About Area Style 
-** - What we offer Area Style 
+** - Main Slider Area Style
+** - Request A Quote Area Style
+** - About Area Style
+** - What we offer Area Style
 ** - Why Choose Us Area Style
 ** - Counter Area Style
 ** - Service Area Style
@@ -34,7 +34,7 @@ This files table contents are outlined below>>>>>
 ** - Log In Area Style
 ** - Sign Up Area Style
 ** - Recover Password Area Style
-** - Coming Soon Area Style   
+** - Coming Soon Area Style
 ** - 404 Error Area Style
 ** - FAQ Area Style
 *******************************************
@@ -1947,7 +1947,7 @@ What We Offer Area Style
   background-image: url(../img/choose-img-four.jpg);
 }
 
-/* 
+/*
 Counter Area Style
 ======================================================*/
 .single-counter {
@@ -1983,7 +1983,7 @@ Counter Area Style
   color: #ffffff;
 }
 
-/* 
+/*
 Service Area Style
 ======================================================*/
 .single-service {
@@ -2092,7 +2092,7 @@ Service Area Style
   background-image: url(../img/service/1.jpg);
 }
 
-/* 
+/*
 Began Area Style
 ======================================================*/
 .began-top-wrap {
@@ -2176,7 +2176,7 @@ Began Area Style
   border-right: 1px solid #eeeeee;
 }
 
-/* 
+/*
 Testimonials Area Style
 ======================================================*/
 .testimonials-area .section-title span {
@@ -3322,7 +3322,7 @@ Header Style Three
 }
 
 /*
-Navbar Area Three Style 
+Navbar Area Three Style
 ======================================================*/
 .prevoz-nav-style-three .navbar-area .main-nav {
   background-color: #fa4612;
@@ -3431,7 +3431,7 @@ Navbar Area Three Style
 }
 
 /*
-Prevoz Slider Area Three Style 
+Prevoz Slider Area Three Style
 ======================================================*/
 .prevoz-slider-area-three .prevoz-slider-text {
   text-align: left;
@@ -3471,7 +3471,7 @@ Prevoz Slider Area Three Style
 }
 
 /*
-About Area Three Style 
+About Area Three Style
 ======================================================*/
 .about-area-three .about-content {
   margin-right: auto !important;
@@ -3520,7 +3520,7 @@ About Area Three Style
 }
 
 /*
-Track Area Three Style 
+Track Area Three Style
 ======================================================*/
 .track-area-three {
   position: relative;
@@ -3537,7 +3537,7 @@ Track Area Three Style
 }
 
 /*
-Choose Us Three Style 
+Choose Us Three Style
 ======================================================*/
 .choose-us-area-three .choose-main-wrap {
   background-image: url(../img/choose-bg.jpg);
@@ -3552,7 +3552,7 @@ Choose Us Three Style
 }
 
 /*
-Began Three Style 
+Began Three Style
 ======================================================*/
 .began-area-three {
   background-image: url(../img/began-main-bg.jpg);
@@ -3628,7 +3628,7 @@ Began Three Style
 }
 
 /*
-testimonials Area Three Style 
+testimonials Area Three Style
 ======================================================*/
 .testimonials-content-three {
   background-color: #ffffff;
@@ -3665,7 +3665,7 @@ testimonials Area Three Style
 }
 
 /*
-Tracking Number Area Three Style 
+Tracking Number Area Three Style
 ======================================================*/
 .tracking-number-area-three .section-title span {
   color: #ffffff;
@@ -3689,7 +3689,7 @@ Tracking Number Area Three Style
 }
 
 /*
-Blog Area Three Style 
+Blog Area Three Style
 ======================================================*/
 .blog-area-three .single-blog {
   -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
@@ -3703,7 +3703,7 @@ Blog Area Three Style
 }
 
 /*
-Footer Top Area Three Style 
+Footer Top Area Three Style
 ======================================================*/
 .footer-top-area-three {
   background-color: #24416b;
@@ -3731,7 +3731,7 @@ Footer Top Area Three Style
 }
 
 /*
-Subscribe Area Three Style 
+Subscribe Area Three Style
 ======================================================*/
 .subscribe-area-three {
   background-color: #ffffff;
@@ -3771,7 +3771,7 @@ Subscribe Area Three Style
 }
 
 /*
-Testimonials Area Three Style 
+Testimonials Area Three Style
 ======================================================*/
 .testimonials-three {
   position: relative;
@@ -4061,7 +4061,7 @@ Tracking Area Four Style
 }
 
 /*
-About Area Four Style 
+About Area Four Style
 ======================================================*/
 .about-area-four {
   position: relative;
@@ -6389,7 +6389,7 @@ Ask Question Area Style
   background-color: transparent;
 }
 
-/* 
+/*
 FAQ Area Style
 =====================================================*/
 .faq-area .faq-accordion .accordion {
@@ -6486,7 +6486,7 @@ FAQ Area Style
   height: 100%;
 }
 
-/* 
+/*
 Contact Validator Style
 =====================================================*/
 .list-unstyled {
@@ -6508,7 +6508,7 @@ Contact Validator Style
   color: #28a745 !important;
 }
 
-/* 
+/*
 Coming Soon Area Style
 =====================================================*/
 .coming-soon-area {
@@ -6967,7 +6967,7 @@ Coming Soon Area Style
   width: 100%;
 }
 
-/* 
+/*
 Address Area Style
 ======================================================*/
 .single-address {
@@ -6980,6 +6980,17 @@ Address Area Style
   z-index: 1;
   margin-bottom: 30px;
 }
+
+.contact-form {
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+  }
 
 .single-address::before {
   content: "";

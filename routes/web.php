@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminContactSubmissionController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProfileController;
@@ -24,6 +25,8 @@ Auth::routes();
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::post('contact-submit', [HomeController::class, 'contactSubmit'])->name('contact.submit');
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('services', [HomeController::class, 'services'])->name('services');
@@ -39,4 +42,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('settings',AdminSettingController::class)->only(['index','update']);
 
     Route::resource('orders',AdminOrderController::class);
+
+    Route::resource('contact-submissions',AdminContactSubmissionController::class)->only(['index','destroy']);
 });

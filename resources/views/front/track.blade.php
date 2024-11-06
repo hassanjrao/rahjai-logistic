@@ -2,6 +2,10 @@
 
 @section('page-title', 'Track Your Package')
 
+@php
+    $setting= App\Models\Setting::first();
+@endphp
+
 @section('content')
 
     <!-- Start Tracking Number Area -->
@@ -36,9 +40,13 @@
                     <div class="single-address">
                         <i class='bx bx-phone-call'></i>
                         <h3>Contact</h3>
-                        <span>+966 819 0XXXXX</a></span> </br>
+                        <a href="tel:{{ $setting->phone }}">
+                            {{ $setting->phone }}
+                        </a>
 
-                        <p>support@rahjiexpress.com</p>
+                        <a class="mt-3" href="mailto:{{ $setting->email }}">
+                            {{ $setting->email }}
+                            </a>
 
                     </div>
                 </div>
@@ -48,7 +56,9 @@
                         <h3>Location</h3>
                         <span><strong>Find where we are</strong></span> </br>
 
-                        <span>Riyadh Saudi Arabia</span> </br>
+                        <span>
+                            {{ $setting->address }}
+                            </span> </br>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
@@ -56,7 +66,9 @@
                         <i class='bx bx-time'></i>
                         <h3>Meet Us</h3>
                         <span>Available Hours to meet</span>
-                        <p>9:00 AM – 8:00 PM</p>
+                        <p>
+                            {{ $setting->timing }}
+                        </p>
                     </div>
                 </div>
             </div>

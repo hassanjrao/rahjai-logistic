@@ -26,6 +26,7 @@ class SettingSeeder extends Seeder
             'address' => '123 Main Street, New York, NY 10030',
             'phone' => '+1234567890',
             'email' => 'test@m.com',
+            'timing'=>'9:00 AM – 8:00 PM',
         ]);
     }
 }
