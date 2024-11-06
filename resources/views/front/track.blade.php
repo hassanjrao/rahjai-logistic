@@ -228,9 +228,9 @@
 
     @if ($order)
         <section>
-            <div class="container mt-5 trackingSec">
+            <div class="mt-5 trackingSec" style="margin: 3rem ">
                 <div class="row">
-                    <div class="col-md-12 col-lg-12">
+                    <div class="col-lg-8">
                         <div id="tracking-pre"></div>
                         <div id="tracking">
                             <div class="text-center tracking-status-intransit">
@@ -262,6 +262,10 @@
 
                         </div>
 
+                    </div>
+                    {{-- image --}}
+                    <div class="col-lg-4">
+                        <img src="{{ $order->image_url }}" alt="" style="width: 100%">
                     </div>
                 </div>
             </div>
