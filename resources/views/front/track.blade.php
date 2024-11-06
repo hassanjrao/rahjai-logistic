@@ -231,37 +231,43 @@
             <div class="mt-5 trackingSec" style="margin: 3rem ">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div id="tracking-pre"></div>
-                        <div id="tracking">
-                            <div class="text-center tracking-status-intransit">
-                                <p class="tracking-status text-tight">
-                                    {{ '#' . $order->tracking_number }} {{ $order->orderStatus->name }}
-                                </p>
-                            </div>
-                            <div class="tracking-list">
-                                @foreach ($orderLogs as $log)
-                                    <div class="tracking-item">
-                                        <div class="tracking-icon status-outfordelivery">
-                                            <svg class="svg-inline--fa fa-shipping-fast fa-w-20" aria-hidden="true"
-                                                data-prefix="fas" data-icon="shipping-fast" role="img"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
-                                                <path fill="currentColor"
-                                                    d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z">
-                                                </path>
-                                            </svg>
-                                            <!-- <i class="fas fa-circle"></i> -->
-                                        </div>
-                                        <div class="tracking-date"> {{ $log->created_at->format('d M, Y h:i A') }}</div>
-                                        <div class="tracking-content"> {{ $log->orderStatus->name }}:
-                                            {{ $log->description }}</div>
+
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <div id="tracking-pre"></div>
+                                <div id="tracking">
+                                    <div class="text-center tracking-status-intransit">
+                                        <p class="tracking-status text-tight">
+                                            {{ '#' . $order->tracking_number }} {{ $order->orderStatus->name }}
+                                        </p>
                                     </div>
-                                @endforeach
+                                    <div class="tracking-list">
+                                        @foreach ($orderLogs as $log)
+                                            <div class="tracking-item">
+                                                <div class="tracking-icon status-outfordelivery">
+                                                    <svg class="svg-inline--fa fa-shipping-fast fa-w-20" aria-hidden="true"
+                                                        data-prefix="fas" data-icon="shipping-fast" role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                                                        data-fa-i2svg="">
+                                                        <path fill="currentColor"
+                                                            d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z">
+                                                        </path>
+                                                    </svg>
+                                                    <!-- <i class="fas fa-circle"></i> -->
+                                                </div>
+                                                <div class="tracking-date"> {{ $log->created_at->format('d M, Y h:i A') }}
+                                                </div>
+                                                <div class="tracking-content"> {{ $log->orderStatus->name }}:
+                                                    {{ $log->description }}</div>
+                                            </div>
+                                        @endforeach
 
 
+                                    </div>
+
+                                </div>
                             </div>
-
                         </div>
-
                     </div>
                     {{-- image --}}
                     <div class="col-lg-4">
