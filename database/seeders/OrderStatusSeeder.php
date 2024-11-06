@@ -14,6 +14,8 @@ class OrderStatusSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('order_statuses')->truncate();
+
         $statuses=[
             [
                 'code'=>'BEING_PROCESSED',
@@ -24,7 +26,7 @@ class OrderStatusSeeder extends Seeder
             ],
             [
                 'code'=>'IN_TRANSIT',
-                'name'=>'Package on route to destination',
+                'name'=>'In Transit',
                 'description'=>'Package is on route to destination.',
                 'created_at'=>now(),
                 'updated_at'=>now()
