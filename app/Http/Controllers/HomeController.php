@@ -102,18 +102,18 @@ class HomeController extends Controller
             'message' => $request->message,
         ]);
 
-        try{
+        // try{
         $admin=User::first();
 
         $admin->notify(new ContactUsNotification($cs));
-        }catch(\Exception $e){
-            // do nothing
-            Log::error('HomeController@contactSubmit: ',[
-                'message'=>$e->getMessage(),
-                'line'=>$e->getLine(),
-                'stack'=>$e->getTraceAsString()
-            ]);
-        }
+        // }catch(\Exception $e){
+        //     // do nothing
+        //     Log::error('HomeController@contactSubmit: ',[
+        //         'message'=>$e->getMessage(),
+        //         'line'=>$e->getLine(),
+        //         'stack'=>$e->getTraceAsString()
+        //     ]);
+        // }
 
         return redirect()->back()->withToastSuccess('Your message has been sent successfully, we will get back to you soon.');
     }
