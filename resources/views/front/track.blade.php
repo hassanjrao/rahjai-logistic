@@ -203,6 +203,7 @@
     </div>
     <!-- End Tracking Number Area -->
 
+
     @if ($message)
         <section>
             <div class="container mt-5 trackingSec">
@@ -226,7 +227,76 @@
         </section>
     @endif
 
+
     @if ($order)
+
+        <section>
+            <div class="container mt-5 trackingSec">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{-- sender details --}}
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="sender">Sender</label>
+                                    <input type="text" class="form-control" id="sender"
+                                        value="{{ $order->sender_name }}" readonly>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="sender">Sender Phone</label>
+                                    <input type="text" class="form-control" id="sender"
+                                        value="{{ $order->sender_phone }}" readonly>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="sender">Sender Email</label>
+                                    <input type="text" class="form-control" id="sender"
+                                        value="{{ $order->sender_email }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="receiver">Receiver</label>
+                                    <input type="text" class="form-control" id="receiver"
+                                        value="{{ $order->receiver_name }}" readonly>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="receiver">Receiver Phone</label>
+                                    <input type="text" class="form-control" id="receiver"
+                                        value="{{ $order->receiver_phone }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="receiver">Receiver Email</label>
+                                    <input type="text" class="form-control" id="receiver"
+                                        value="{{ $order->receiver_email }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </section>
+
         <section>
             <div class="container mt-5 trackingSec">
                 <div class="row">
