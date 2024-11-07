@@ -54,7 +54,8 @@ class AdminOrderController extends Controller
             'receiver_phone' => 'nullable',
             'receiver_email' => 'nullable',
             'image' => 'nullable|image',
-            'address' => 'nullable',
+            'sender_address' => 'nullable',
+            'receiver_address' => 'nullable',
         ]);
 
         $orderObj = new Order();
@@ -69,7 +70,8 @@ class AdminOrderController extends Controller
             'receiver_phone' => $request->receiver_phone,
             'receiver_email' => $request->receiver_email,
             'image_path' => $request->image ? $request->file('image')->store('orders') : null,
-            'address' => $request->address,
+            'sender_address' => $request->sender_address,
+            'receiver_address' => $request->receiver_address,
         ]);
 
 
@@ -136,7 +138,9 @@ class AdminOrderController extends Controller
             'receiver_phone' => 'nullable',
             'receiver_email' => 'nullable',
             'image' => 'nullable|image',
-            'address' => 'nullable',
+            'sender_address' => 'nullable',
+            'receiver_address' => 'nullable',
+
         ]);
 
         $originalOrderStatus = $order->order_status_code;
@@ -149,7 +153,8 @@ class AdminOrderController extends Controller
             'receiver_name' => $request->receiver_name,
             'receiver_phone' => $request->receiver_phone,
             'receiver_email' => $request->receiver_email,
-            'address' => $request->address,
+            'sender_address' => $request->sender_address,
+            'receiver_address' => $request->receiver_address,
         ]);
 
         $updatedOrderStatus = $order->order_status_code;

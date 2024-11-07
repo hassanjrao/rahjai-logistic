@@ -39,9 +39,11 @@
                                 <th>Sender Name</th>
                                 <th>Sender Email</th>
                                 <th>Sender Phone</th>
+                                <th>Sender Address</th>
                                 <th>Receiver Name</th>
                                 <th>Receiver Email</th>
                                 <th>Receiver Phone</th>
+                                <th>Receiver Address</th>
                                 <th>Image</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
@@ -62,9 +64,11 @@
                                     <td>{{ $order->sender_name }}</td>
                                     <td>{{ $order->sender_email }}</td>
                                     <td>{{ $order->sender_phone }}</td>
+                                    <td>{{ $order->sender_address }}</td>
                                     <td>{{ $order->receiver_name }}</td>
                                     <td>{{ $order->receiver_email }}</td>
                                     <td>{{ $order->receiver_phone }}</td>
+                                    <td>{{ $order->receiver_address }}</td>
                                     <td>
                                         <img src="{{ $order->image_url }}" alt="" style="width: 100px">
                                     </td>

@@ -75,21 +75,6 @@
                             </div>
 
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                                <?php
-                                $value = old('address', $order ? $order->address : null);
-
-                                ?>
-                                <label class="form-label" for="label"> Address <span
-                                        class="text-danger"></span></label>
-                                <textarea class="form-control" id="address" name="address"
-                                    placeholder="Enter address">{{ $value }}</textarea>
-                                @error('address')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
 
                             <hr>
@@ -148,9 +133,28 @@
                             </div>
 
 
-
                             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                             </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <?php
+                                $value = old('sender_address', $order ? $order->sender_address : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Sender Address <span
+                                        class="text-danger"></span></label>
+                                <textarea class="form-control" id="sender_address" name="sender_address"
+                                    placeholder="Enter sender address">{{ $value }}</textarea>
+                                @error('sender_address')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+
+
+
 
 
                             <hr>
@@ -209,6 +213,22 @@
                             </div>
 
 
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <?php
+                                $value = old('receiver_address', $order ? $order->receiver_address : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Receiver Address <span
+                                        class="text-danger"></span></label>
+                                <textarea class="form-control" id="receiver_address" name="receiver_address"
+                                    placeholder="Enter Receiver ddress">{{ $value }}</textarea>
+                                @error('receiver_address')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
 
 

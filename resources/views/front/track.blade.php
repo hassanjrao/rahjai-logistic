@@ -231,12 +231,12 @@
     @if ($order)
 
         <section>
-            <div class="container mt-5 trackingSec">
+            <div class="container mt-5">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6 trackingSec">
                         {{-- sender details --}}
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="sender">Sender</label>
                                     <input type="text" class="form-control" id="sender"
@@ -244,7 +244,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="sender">Sender Phone</label>
                                     <input type="text" class="form-control" id="sender"
@@ -252,21 +252,28 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="sender">Sender Email</label>
                                     <input type="text" class="form-control" id="sender"
                                         value="{{ $order->sender_email }}" readonly>
                                 </div>
                             </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="sender">Sender Address</label>
+                                    <input type="text" class="form-control" id="sender"
+                                        value="{{ $order->sender_address }}" readonly>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
 
-                    <div class="col-lg-12">
-                        <hr>
+                    <div class="col-lg-6 trackingSec">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="receiver">Receiver</label>
                                     <input type="text" class="form-control" id="receiver"
@@ -274,7 +281,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="receiver">Receiver Phone</label>
                                     <input type="text" class="form-control" id="receiver"
@@ -282,11 +289,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="receiver">Receiver Email</label>
                                     <input type="text" class="form-control" id="receiver"
                                         value="{{ $order->receiver_email }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="receiver">Receiver Address</label>
+                                    <input type="text" class="form-control" id="receiver"
+                                        value="{{ $order->receiver_address }}" readonly>
                                 </div>
                             </div>
                         </div>
