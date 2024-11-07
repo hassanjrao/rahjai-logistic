@@ -252,7 +252,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="sender">Sender Email</label>
                                     <input type="text" class="form-control" id="sender"
@@ -260,7 +260,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="sender">Sender Address</label>
                                     <input type="text" class="form-control" id="sender"
@@ -289,7 +289,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="receiver">Receiver Email</label>
                                     <input type="text" class="form-control" id="receiver"
@@ -297,7 +297,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="receiver">Receiver Address</label>
                                     <input type="text" class="form-control" id="receiver"
