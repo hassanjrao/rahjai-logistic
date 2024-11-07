@@ -56,6 +56,7 @@ class AdminOrderController extends Controller
             'image' => 'nullable|image',
             'sender_address' => 'nullable',
             'receiver_address' => 'nullable',
+            'status_date_time' => 'nullable',
         ]);
 
         $orderObj = new Order();
@@ -72,6 +73,7 @@ class AdminOrderController extends Controller
             'image_path' => $request->image ? $request->file('image')->store('orders') : null,
             'sender_address' => $request->sender_address,
             'receiver_address' => $request->receiver_address,
+            'status_date_time' => $request->status_date_time,
         ]);
 
 
@@ -80,6 +82,8 @@ class AdminOrderController extends Controller
             ->performedOn($order)
             ->tap(function (Activity $activity) use ($request) {
                 $activity->order_status_code = $request->status;
+                $activity->created_at=$request->status_date_time;
+                $activity->updated_at=$request->status_date_time;
             })
             ->log($order->orderStatus->description);
 
@@ -140,7 +144,7 @@ class AdminOrderController extends Controller
             'image' => 'nullable|image',
             'sender_address' => 'nullable',
             'receiver_address' => 'nullable',
-
+            'status_date_time' => 'nullable',
         ]);
 
         $originalOrderStatus = $order->order_status_code;
@@ -167,11 +171,17 @@ class AdminOrderController extends Controller
 
         if ($originalOrderStatus != $updatedOrderStatus) {
 
+            $order->update([
+                'status_date_time' => $request->status_date_time,
+            ]);
+
             activity()
                 ->causedBy(auth()->user())
                 ->performedOn($order)
                 ->tap(function (Activity $activity) use ($request) {
                     $activity->order_status_code = $request->status;
+                    $activity->created_at=$request->status_date_time;
+                    $activity->updated_at=$request->status_date_time;
                 })
                 ->log($order->orderStatus->description);
         }

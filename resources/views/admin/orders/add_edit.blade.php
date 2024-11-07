@@ -69,6 +69,24 @@
                                 @enderror
                             </div>
 
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <?php
+                                $value = old('status_date_time', $order ? $order->status_date_time : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Date/Time <span
+                                        class="text-danger"></span></label>
+                                <input class="form-control" id="status_date_time"
+                                type="datetime-local"
+                                    value="{{ $value }}"
+                                    name="status_date_time" placeholder="Enter sender name">
+                                @error('status_date_time')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
 
 
                             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
