@@ -6,8 +6,11 @@ use App\Models\ContactSubmission;
 use App\Models\CustomActivity;
 use App\Models\Order;
 use App\Models\OrderStatus;
+use App\Models\User;
+use App\Notifications\ContactUsNotification;
 use Database\Seeders\OrderSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -92,12 +95,25 @@ class HomeController extends Controller
             'message' => 'required',
         ]);
 
-        ContactSubmission::create([
+       $cs= ContactSubmission::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'message' => $request->message,
         ]);
+
+        try{
+        $admin=User::first();
+
+        $admin->notify(new ContactUsNotification($cs));
+        }catch(\Exception $e){
+            // do nothing
+            Log::error('HomeController@contactSubmit: ',[
+                'message'=>$e->getMessage(),
+                'line'=>$e->getLine(),
+                'stack'=>$e->getTraceAsString()
+            ]);
+        }
 
         return redirect()->back()->withToastSuccess('Your message has been sent successfully, we will get back to you soon.');
     }
