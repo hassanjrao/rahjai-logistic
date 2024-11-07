@@ -47,13 +47,14 @@ class AdminOrderController extends Controller
     {
         $request->validate([
             'status' => 'required|exists:order_statuses,code',
-            'sender_name' => 'required',
-            'sender_phone' => 'required',
-            'sender_email' => 'required',
-            'receiver_name' => 'required',
-            'receiver_phone' => 'required',
-            'receiver_email' => 'required',
-            'image' => 'required|image',
+            'sender_name' => 'nullable',
+            'sender_phone' => 'nullable',
+            'sender_email' => 'nullable',
+            'receiver_name' => 'nullable',
+            'receiver_phone' => 'nullable',
+            'receiver_email' => 'nullable',
+            'image' => 'nullable|image',
+            'address' => 'nullable',
         ]);
 
         $orderObj = new Order();
@@ -67,13 +68,17 @@ class AdminOrderController extends Controller
             'receiver_name' => $request->receiver_name,
             'receiver_phone' => $request->receiver_phone,
             'receiver_email' => $request->receiver_email,
-            'image_path' => $request->file('image')->store('orders')
+            'image_path' => $request->image ? $request->file('image')->store('orders') : null,
+            'address' => $request->address,
         ]);
 
 
         activity()
             ->causedBy(auth()->user())
             ->performedOn($order)
+            ->tap(function (Activity $activity) use ($request) {
+                $activity->order_status_code = $request->status;
+            })
             ->log($order->orderStatus->description);
 
         return redirect()->route('admin.orders.index')->withToastSuccess('Created successfully');
@@ -103,12 +108,12 @@ class AdminOrderController extends Controller
         $order = Order::findOrFail($id);
 
 
-        $orderLogs=CustomActivity::where('subject_type',Order::class)->where('subject_id',$order->id)
-        ->with(['orderStatus'])
-        ->latest()
-        ->get();
+        $orderLogs = CustomActivity::where('subject_type', Order::class)->where('subject_id', $order->id)
+            ->with(['orderStatus'])
+            ->latest()
+            ->get();
 
-        return view('admin.orders.add_edit', compact('orderStatuses', 'order','orderLogs'));
+        return view('admin.orders.add_edit', compact('orderStatuses', 'order', 'orderLogs'));
     }
 
     /**
@@ -120,18 +125,21 @@ class AdminOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order=Order::findOrFail($id);
+        $order = Order::findOrFail($id);
 
         $request->validate([
             'status' => 'required|exists:order_statuses,code',
-            'sender_name' => 'required',
-            'sender_phone' => 'required',
-            'sender_email' => 'required',
-            'receiver_name' => 'required',
-            'receiver_phone' => 'required',
-            'receiver_email' => 'required',
+            'sender_name' => 'nullable',
+            'sender_phone' => 'nullable',
+            'sender_email' => 'nullable',
+            'receiver_name' => 'nullable',
+            'receiver_phone' => 'nullable',
+            'receiver_email' => 'nullable',
             'image' => 'nullable|image',
+            'address' => 'nullable',
         ]);
+
+        $originalOrderStatus = $order->order_status_code;
 
         $order->update([
             'order_status_code' => $request->status,
@@ -141,24 +149,29 @@ class AdminOrderController extends Controller
             'receiver_name' => $request->receiver_name,
             'receiver_phone' => $request->receiver_phone,
             'receiver_email' => $request->receiver_email,
+            'address' => $request->address,
         ]);
 
-        if($request->image){
+        $updatedOrderStatus = $order->order_status_code;
+
+        if ($request->image) {
             $order->update([
                 'image_path' => $request->file('image')->store('orders')
-        ]);
+            ]);
         }
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($order)
-            ->tap(function(Activity $activity) use($request){
-                $activity->order_status_code=$request->status;
-            })
-            ->log($order->orderStatus->description);
+        if ($originalOrderStatus != $updatedOrderStatus) {
 
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($order)
+                ->tap(function (Activity $activity) use ($request) {
+                    $activity->order_status_code = $request->status;
+                })
+                ->log($order->orderStatus->description);
+        }
 
-        return redirect()->route('admin.orders.index')->withToastSuccess('Updated successfully');
+        return back()->withToastSuccess('Updated successfully');
     }
 
     /**

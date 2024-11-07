@@ -22,8 +22,7 @@
 
 
 
-                                    <form class="tracking-wrap" action="https://www.rahjiexpress.com/index.php"
-                                        method="POST">
+                                    <form class="tracking-wrap"action="{{ route('track') }}" method="GET">
                                         <input type="text" class="input-tracking" placeholder="Type your tracking number"
                                             name="tid">
                                         <button class="default-btn active" type="submit" value="submit"
@@ -52,8 +51,7 @@
                                 <div class="tracking-body">
 
 
-                                    <form class="tracking-wrap" action="https://www.rahjiexpress.com/index.php"
-                                        method="POST">
+                                    <form class="tracking-wrap"action="{{ route('track') }}" method="GET">
                                         <input type="text" class="input-tracking" placeholder="Type your tracking number"
                                             name="tid">
                                         <button class="default-btn active" type="submit" value="submit"
@@ -77,8 +75,7 @@
 
 
 
-                                    <form class="tracking-wrap" action="https://www.rahjiexpress.com/index.php"
-                                        method="POST">
+                                    <form class="tracking-wrap"action="{{ route('track') }}" method="GET">
                                         <input type="text" class="input-tracking" placeholder="Type your tracking number"
                                             name="tid">
                                         <button class="default-btn active" type="submit" value="submit"

@@ -51,7 +51,7 @@
                                 $value = old('status', $order ? $order->order_status_code : null);
 
                                 ?>
-                                <label class="form-label" for="label"> Status <span class="text-danger">*</span></label>
+                                <label class="form-label" for="label"> Status <span class="text-danger"></span></label>
 
                                 <select required class="form-select" id="status" name="status">
                                     <option value="">Select Status</option>
@@ -75,6 +75,23 @@
                             </div>
 
 
+                            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <?php
+                                $value = old('address', $order ? $order->address : null);
+
+                                ?>
+                                <label class="form-label" for="label"> Address <span
+                                        class="text-danger"></span></label>
+                                <textarea class="form-control" id="address" name="address"
+                                    placeholder="Enter address">{{ $value }}</textarea>
+                                @error('address')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+
                             <hr>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
@@ -83,7 +100,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Sender Name <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="text" value="{{ $value }}" class="form-control" id="sender_name"
                                     name="sender_name" placeholder="Enter sender name">
                                 @error('sender_name')
@@ -101,7 +118,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Sender Phone <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="text" value="{{ $value }}" class="form-control" id="sender_phone"
                                     name="sender_phone" placeholder="Enter sender phone">
                                 @error('sender_phone')
@@ -119,7 +136,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Sender Email <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="email" value="{{ $value }}" class="form-control" id="sender_email"
                                     name="sender_email" placeholder="Enter sender email">
                                 @error('sender_email')
@@ -144,7 +161,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Receiver Name <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="text" value="{{ $value }}" class="form-control" id="receiver_name"
                                     name="receiver_name" placeholder="Enter receiver name">
                                 @error('receiver_name')
@@ -162,7 +179,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Receiver Phone <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="text" value="{{ $value }}" class="form-control" id="receiver_phone"
                                     name="receiver_phone" placeholder="Enter receiver phone">
                                 @error('receiver_phone')
@@ -180,7 +197,7 @@
 
                                 ?>
                                 <label class="form-label" for="label"> Receiver Email <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger"></span></label>
                                 <input type="email" value="{{ $value }}" class="form-control" id="receiver_email"
                                     name="receiver_email" placeholder="Enter receiver email">
                                 @error('receiver_email')
@@ -213,9 +230,9 @@
                                 <img src="{{ $order->image_url }}" alt="image" class="img-fluid">
                             @endif
 
-                            <label class="form-label" for="label">Image <span class="text-danger">*</span></label>
+                            <label class="form-label" for="label">Image <span class="text-danger"></span></label>
                             <input type="file" accept="image/*" class="form-control" id="image"
-                                {{ $order ? '' : 'required' }} name="image">
+                                 name="image">
                             @error('image')
                                 <span class="text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
